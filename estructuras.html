@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estructuras de Datos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Estructuras de Datos</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Importancia en la Programación</h2>
+      <p>
+        Las estructuras de datos son fundamentales en la informática y la programación porque permiten organizar, gestionar y almacenar eficientemente los datos. La elección adecuada de una estructura de datos puede mejorar significativamente el rendimiento de un algoritmo y reducir el uso de memoria. Son la base de prácticamente todos los programas informáticos, desde simples aplicaciones hasta complejos sistemas distribuidos. Según Sedgewick y Wayne (2011), una comprensión sólida de las estructuras de datos permite al programador escribir código más claro, eficiente y mantenible.
+      </p>
+    </section>
+
+    <section>
+      <h2>Diferencias entre Estructuras Estáticas y Dinámicas</h2>
+      <p>
+        Las estructuras de datos pueden clasificarse en estáticas y dinámicas:
+        <ul>
+          <li><strong>Estáticas</strong>: El tamaño se define en tiempo de compilación. Ejemplo: arrays.</li>
+          <li><strong>Dinámicas</strong>: Pueden crecer o disminuir durante la ejecución del programa. Ejemplo: listas enlazadas.</li>
+        </ul>
+        Las estructuras estáticas son más rápidas en acceso, mientras que las dinámicas ofrecen mayor flexibilidad en la gestión de datos variables o desconocidos en tiempo de compilación.
+      </p>
+    </section>
+
+    <section>
+      <h2>Operaciones Fundamentales</h2>
+      <p>
+        Las operaciones fundamentales en cualquier estructura de datos incluyen:
+        <ul>
+          <li><strong>Inserción</strong>: Agregar elementos.</li>
+          <li><strong>Eliminación</strong>: Borrar elementos.</li>
+          <li><strong>Acceso</strong>: Leer un valor en una posición específica.</li>
+          <li><strong>Búsqueda</strong>: Encontrar un elemento determinado.</li>
+        </ul>
+        La eficiencia de estas operaciones varía según la estructura de datos empleada.
+      </p>
+    </section>
+
+    <section>
+      <h2>Complejidad Temporal</h2>
+      <p>
+        Comprender la complejidad de las operaciones básicas permite seleccionar estructuras más adecuadas. Por ejemplo:
+        <ul>
+          <li>Acceso en arrays: O(1)</li>
+          <li>Búsqueda en listas no ordenadas: O(n)</li>
+          <li>Inserción en listas enlazadas: O(1) si se conoce la posición</li>
+        </ul>
+        La elección incorrecta puede llevar a cuellos de botella en rendimiento.
+      </p>
+    </section>
+
+    <section>
+      <h2>Estructuras Lineales</h2>
+      <h3>Arreglos (Arrays)</h3>
+      <p>
+        Los arrays almacenan elementos del mismo tipo en posiciones contiguas de memoria. Son eficientes en acceso, pero su tamaño es fijo. Son útiles cuando se conoce de antemano la cantidad de datos.
+      </p>
+      <h3>Pilas (Stacks)</h3>
+      <p>
+        Las pilas siguen el principio LIFO (Last In, First Out). Se usan en llamadas recursivas, navegadores, y evaluadores de expresiones. Las operaciones principales son <code>push</code> y <code>pop</code>.
+      </p>
+      <h3>Colas (Queues)</h3>
+      <p>
+        Las colas aplican el principio FIFO (First In, First Out). Se usan en procesos de impresión, programación multitarea y simulaciones. Variantes incluyen colas dobles y prioritarias.
+      </p>
+    </section>
+
+    <section>
+      <h2>Estructuras No Lineales</h2>
+      <h3>Árboles</h3>
+      <p>
+        Los árboles son estructuras jerárquicas donde cada nodo tiene hijos. Aplicaciones: árboles de decisión, expresiones algebraicas, y sistemas de archivos. Un árbol binario de búsqueda permite búsquedas eficientes O(log n) si está equilibrado.
+      </p>
+      <h3>Grafos</h3>
+      <p>
+        Los grafos representan redes de nodos conectados por aristas. Son útiles en redes sociales, algoritmos de rutas (como Dijkstra o A*), y análisis de dependencias. Su implementación puede ser mediante listas de adyacencia o matrices.
+      </p>
+    </section>
+<img src="imagen2.jpg" alt="Diagrama de recursividad" width="600">
+    <section>
+      <h2>Uso en Lenguajes Populares</h2>
+      <p>
+        Las estructuras de datos están implementadas de forma nativa o mediante librerías en lenguajes como:
+        <ul>
+          <li><strong>C++</strong>: STL (Standard Template Library) ofrece vectores, listas, mapas, sets.</li>
+          <li><strong>Java</strong>: Colecciones como ArrayList, LinkedList, HashMap, TreeSet.</li>
+          <li><strong>Python</strong>: Listas, diccionarios, conjuntos, tuplas; además del módulo <code>collections</code> y <code>heapq</code>.</li>
+        </ul>
+        Estas estructuras facilitan la resolución de problemas sin necesidad de reinventar la rueda.
+      </p>
+    </section>
+
+    <section>
+      <h2>Impacto en la Optimización de Software</h2>
+      <p>
+        Una estructura de datos adecuada puede reducir drásticamente el tiempo de ejecución y el uso de memoria. También permite una organización más lógica del código, facilita su mantenimiento y extensión, y mejora la escalabilidad de las soluciones.
+      </p>
+    </section>
+
+    <section>
+      <h2>Referencias (formato APA)</h2>
+      <ul>
+        <li>Sedgewick, R., & Wayne, K. (2011). <em>Algorithms</em> (4th ed.). Addison-Wesley.</li>
+        <li>Knuth, D. E. (1998). <em>The Art of Computer Programming, Vol. 1</em>. Addison-Wesley.</li>
+        <li>Goodrich, M. T., & Tamassia, R. (2014). <em>Data Structures and Algorithms in Java</em>. Wiley.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Proyecto de Hipertexto Académico</p>
+  </footer>
+</body>
+</html>

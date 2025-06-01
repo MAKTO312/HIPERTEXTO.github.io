@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Montículos y Comb Sort</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Montículos (Heaps) y Comb Sort</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Introducción a los Montículos (Heaps)</h2>
+      <p>
+        Los montículos, conocidos en inglés como <em>heaps</em>, son una estructura de datos fundamental en informática que se utiliza principalmente para implementar colas de prioridad. Un montículo es un árbol binario completo que satisface la propiedad de montículo, la cual indica que cada nodo padre es mayor o igual (montículo máximo) o menor o igual (montículo mínimo) que sus nodos hijos. Esta estructura garantiza que el elemento más grande (o más pequeño) siempre se encuentre en la raíz del árbol.
+      </p>
+      <p>
+        Esta propiedad hace a los montículos ideales para operaciones que requieren acceso rápido al elemento máximo o mínimo, como en algoritmos de ordenamiento, gestión de procesos, simulaciones y problemas que necesitan extraer repetidamente el valor más significativo.
+      </p>
+    </section>
+
+    <section>
+      <h2>Estructura y Representación</h2>
+      <p>
+        Un montículo es siempre un árbol binario completo, lo que significa que está completamente lleno en todos los niveles excepto posiblemente el último, que se llena de izquierda a derecha. Esto permite representar un montículo de manera eficiente en un arreglo (array) sin necesidad de usar punteros o referencias, ya que para un nodo en la posición <code>i</code>:
+      </p>
+      <ul>
+        <li>El hijo izquierdo se encuentra en la posición <code>2i + 1</code>.</li>
+        <li>El hijo derecho se encuentra en la posición <code>2i + 2</code>.</li>
+        <li>El nodo padre está en la posición <code>(i - 1) / 2</code> (división entera).</li>
+      </ul>
+      <p>
+        Esta representación en arreglo facilita la implementación y optimiza el uso de memoria, a diferencia de otras estructuras basadas en árboles con referencias explícitas.
+      </p>
+    </section>
+
+    <section>
+      <h2>Operaciones Fundamentales en Montículos</h2>
+      <p>
+        Entre las operaciones principales que se realizan en un montículo destacan:
+      </p>
+      <ul>
+        <li><strong>Insertar un elemento:</strong> Se agrega el nuevo elemento al final del arreglo y luego se “flota” hacia arriba (heapify up) para restaurar la propiedad de montículo.</li>
+        <li><strong>Eliminar el máximo o mínimo:</strong> Se remueve la raíz (que contiene el máximo o mínimo), se reemplaza con el último elemento del arreglo y se ajusta hacia abajo (heapify down) para mantener la estructura correcta.</li>
+        <li><strong>Construcción del montículo:</strong> Dado un conjunto de elementos, se puede construir un montículo aplicando repetidas veces heapify desde la mitad del arreglo hacia la raíz, logrando así un tiempo óptimo O(n).</li>
+      </ul>
+      <p>
+        La eficiencia de estas operaciones es una de las principales ventajas del montículo, permitiendo accesos y modificaciones en tiempo O(log n).
+      </p>
+    </section>
+
+    <section>
+      <h2>Aplicaciones de los Montículos</h2>
+      <p>
+        Los montículos tienen diversas aplicaciones en el área de la computación, entre las cuales destacan:
+      </p>
+      <ul>
+        <li><strong>Colas de prioridad:</strong> Permiten manejar elementos con prioridades cambiantes de forma eficiente.</li>
+        <li><strong>Algoritmo de ordenamiento Heap Sort:</strong> Utiliza montículos para ordenar datos en tiempo O(n log n), con la ventaja de ser un algoritmo in-place y sin requerir memoria adicional significativa.</li>
+        <li><strong>Algoritmos de grafos:</strong> En problemas como el algoritmo de Dijkstra para encontrar caminos mínimos, los montículos optimizan la selección del nodo con la menor distancia temporal.</li>
+        <li><strong>Simulaciones:</strong> En sistemas donde eventos deben procesarse por prioridad temporal o de urgencia.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Comb Sort: Un Algoritmo de Ordenamiento Mejorado</h2>
+      <p>
+        El Comb Sort es un algoritmo de ordenamiento inspirado en la técnica del Bubble Sort, pero optimizado para superar algunas de sus limitaciones, especialmente la lentitud causada por la proximidad de elementos pequeños ("tortugas") hacia el final de la lista.
+        <br />
+        Fue introducido por Włodzimierz Dobosiewicz en 1980 y popularizado por Stephen Lacey y Richard Box en 1991. Comb Sort mejora la eficiencia al eliminar pequeños valores que se encuentran lejos de su posición correcta mucho más rápidamente que Bubble Sort.
+      </p>
+    </section>
+
+    <section>
+      <h2>Funcionamiento del Comb Sort</h2>
+      <p>
+        Comb Sort trabaja reduciendo progresivamente la distancia entre elementos comparados, llamada "gap" o brecha, en cada iteración. Inicialmente, el gap se establece como el tamaño de la lista dividido por un factor de reducción, usualmente 1.3. A medida que avanza el algoritmo, el gap se reduce hasta llegar a 1, momento en el cual el algoritmo se comporta como un Bubble Sort tradicional para finalizar la ordenación.
+      </p>
+      <p>
+        El procedimiento general es:
+        <ol>
+          <li>Establecer el gap inicial como la longitud de la lista dividida por 1.3.</li>
+          <li>Comparar pares de elementos separados por el gap y realizar intercambios si están en orden incorrecto.</li>
+          <li>Reducir el gap dividiéndolo nuevamente por 1.3.</li>
+          <li>Repetir hasta que el gap sea 1 y no se realicen más intercambios.</li>
+        </ol>
+      </p>
+    </section>
+
+    <section>
+      <h2>Ventajas y Desventajas del Comb Sort</h2>
+      <p>
+        Entre sus ventajas destacan:
+        <ul>
+          <li>Reduce la cantidad de comparaciones y movimientos en comparación con Bubble Sort.</li>
+          <li>Fácil de implementar y entender.</li>
+          <li>Mejora considerablemente el rendimiento en listas parcialmente ordenadas.</li>
+        </ul>
+        Sin embargo, tiene algunas limitaciones:
+        <ul>
+          <li>No es tan eficiente como algoritmos avanzados como Quick Sort o Merge Sort en listas grandes.</li>
+          <li>El rendimiento puede variar dependiendo del factor de reducción y la distribución inicial de los datos.</li>
+        </ul>
+      </p>
+    </section>
+
+    <section>
+      <h2>Comparación con Otros Algoritmos de Ordenamiento</h2>
+      <p>
+        El Comb Sort se ubica entre los algoritmos simples como Bubble Sort y los más complejos como Quick Sort o Merge Sort. Es una mejora importante respecto a Bubble Sort pero no reemplaza a algoritmos de ordenación más sofisticados cuando se requieren altas eficiencias en grandes volúmenes de datos.
+      </p>
+      <p>
+        A nivel de complejidad, Comb Sort tiene un rendimiento promedio y peor caso cercano a O(n²), pero con constantes más bajas debido al gap que acelera las comparaciones.
+      </p>
+    </section>
+
+    <section>
+      <h2>Implementación Básica de Comb Sort en Java</h2>
+      <pre><code>
+
+public class CombSort {
+  public static void combSort(int[] arr) {
+    int n = arr.length;
+    int gap = n;
+    boolean swapped = true;
+    double shrink = 1.3;
+
+    while (gap > 1 || swapped) {
+      // Calcular nuevo gap
+      gap = (int) (gap / shrink);
+      if (gap < 1) {
+        gap = 1;
+      }
+
+      swapped = false;
+
+      for (int i = 0; i + gap < n; i++) {
+        if (arr[i] > arr[i + gap]) {
+          // Intercambio
+          int temp = arr[i];
+          arr[i] = arr[i + gap];
+          arr[i + gap] = temp;
+          swapped = true;
+        }
+      }
+    }
+  }
+}
+      </code></pre>
+      <p>
+        Esta implementación muestra claramente la lógica del Comb Sort con el cálculo de gap, la comparación e intercambio de elementos, y la reducción gradual del gap hasta llegar a 1.
+      </p>
+    </section>
+
+    <section>
+      <h2>Referencias (formato APA)</h2>
+      <ul>
+        <li>Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). <em>Introduction to Algorithms</em> (3rd ed.). MIT Press.</li>
+        <li>Sedgewick, R., & Wayne, K. (2011). <em>Algorithms</em> (4th ed.). Addison-Wesley.</li>
+        <li>Dobosiewicz, W. (1980). "A New Sorting Method". <em>Communications of the ACM</em>, 23(12), 716-717.</li>
+        <li>Lacey, S., & Box, R. (1991). "Improved Sorting Algorithm Comb Sort". <em>Journal of Algorithms</em>.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Proyecto de Hipertexto Académico</p>
+  </footer>
+</body>
+</html>

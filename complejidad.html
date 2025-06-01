@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Análisis de Complejidad en Algoritmos</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Análisis de Complejidad en Algoritmos</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Introducción al Análisis de Complejidad</h2>
+      <p>
+        El análisis de complejidad en algoritmos es una disciplina fundamental
+        en ciencias de la computación que estudia cómo el tiempo y el espacio
+        requeridos por un algoritmo crecen en función del tamaño de su entrada.
+        Comprender esta complejidad permite diseñar programas eficientes,
+        optimizar recursos y anticipar el comportamiento en escenarios de
+        grandes volúmenes de datos.
+      </p>
+      <p>
+        Tal como señalan Cormen et al. (2009), el análisis de algoritmos ayuda a
+        clasificar problemas y soluciones según su viabilidad práctica y su
+        eficiencia computacional.
+      </p>
+    </section>
+
+    <section>
+      <h2>Complejidad Temporal</h2>
+      <p>
+        La complejidad temporal se refiere a la cantidad de tiempo que un
+        algoritmo tarda en ejecutarse en función del tamaño de entrada, usualmente
+        denotado como <em>n</em>. Se expresa en términos de la notación Big O,
+        que describe el comportamiento asintótico para entradas grandes.
+      </p>
+      <p>
+        Ejemplos comunes incluyen:
+        <ul>
+          <li><strong>O(1)</strong>: Tiempo constante, independiente de <em>n</em>.</li>
+          <li><strong>O(n)</strong>: Tiempo lineal, crece proporcionalmente con <em>n</em>.</li>
+          <li><strong>O(n²)</strong>: Tiempo cuadrático, crece con el cuadrado de <em>n</em>.</li>
+        </ul>
+      </p>
+    </section>
+
+    <section>
+      <h2>Análisis de Casos</h2>
+      <p>
+        Los algoritmos se analizan según diferentes escenarios o casos:
+        <ul>
+          <li><strong>Caso mejor</strong>: Situación donde el algoritmo se ejecuta más rápido.</li>
+          <li><strong>Caso promedio</strong>: Tiempo esperado en situaciones comunes.</li>
+          <li><strong>Caso peor</strong>: El escenario que requiere mayor tiempo, importante para garantizar límites de rendimiento.</li>
+        </ul>
+      </p>
+      <p>
+        Por ejemplo, en un algoritmo de búsqueda lineal, el mejor caso es encontrar
+        el elemento en la primera posición (O(1)), y el peor caso es recorrer toda la lista (O(n)).
+      </p>
+    </section>
+
+    <section>
+      <h2>Complejidad Espacial</h2>
+      <p>
+        La complejidad espacial mide la cantidad de memoria o espacio adicional
+        que un algoritmo necesita para ejecutarse. Es fundamental cuando los
+        recursos de memoria son limitados o cuando se manejan grandes conjuntos
+        de datos.
+      </p>
+      <p>
+        Por ejemplo, un algoritmo que copia todos los elementos en una nueva estructura
+        tendrá mayor complejidad espacial que uno que modifica la estructura original
+        in situ.
+      </p>
+    </section>
+
+    <section>
+      <h2>Algoritmos y Estrategias Comunes</h2>
+      <p>
+        Existen diversas estrategias algorítmicas para mejorar la eficiencia:
+        <ul>
+          <li><strong>Programación dinámica:</strong> Técnica para resolver problemas
+            dividiéndolos en subproblemas que se almacenan para evitar cálculos repetidos,
+            optimizando tiempo a costa de espacio.</li>
+          <li><strong>Divide y vencerás:</strong> Divide un problema en subproblemas,
+            resuelve cada uno y combina resultados.</li>
+          <li><strong>Greedy (voraz):</strong> Toma decisiones locales óptimas buscando una
+            solución global.</li>
+        </ul>
+      </p>
+    </section>
+
+    <section>
+      <h2>Referencias (formato APA)</h2>
+      <ul>
+        <li>Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). <em>Introduction to Algorithms</em> (3rd ed.). MIT Press.</li>
+        <li>Knuth, D. E. (1997). <em>The Art of Computer Programming, Vol. 1: Fundamental Algorithms</em> (3rd ed.). Addison-Wesley.</li>
+        <li>Goodrich, M. T., & Tamassia, R. (2014). <em>Algorithm Design and Applications</em>. Wiley.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Proyecto de Hipertexto Académico</p>
+  </footer>
+</body>
+</html>

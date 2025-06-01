@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Algoritmos de Búsqueda: Lineal y Binaria</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Algoritmos de Búsqueda: Búsqueda Lineal y Búsqueda Binaria</h1>
+    <nav>
+      <a href="index.html">Inicio</a>s
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Búsqueda Lineal (Sequential Search)</h2>
+      <p>
+        La búsqueda lineal es el método más simple para encontrar un elemento en una lista o arreglo. Consiste en revisar secuencialmente cada elemento hasta encontrar el valor deseado o llegar al final del arreglo.
+      </p>
+      <p>
+        No requiere que la lista esté ordenada, pero su eficiencia es baja para grandes conjuntos de datos.
+      </p>
+    </section>
+
+    <section>
+      <h3>Funcionamiento</h3>
+      <p>El algoritmo comienza en el primer elemento y compara cada elemento con el valor buscado:</p>
+      <ol>
+        <li>Comparar el primer elemento con el valor objetivo.</li>
+        <li>Si coinciden, devolver la posición.</li>
+        <li>Si no, continuar con el siguiente elemento.</li>
+        <li>Repetir hasta encontrar o terminar la lista.</li>
+      </ol>
+      <p>
+        Si no se encuentra, se devuelve un valor especial, típicamente -1 o null.
+      </p>
+    </section>
+
+    <section>
+      <h3>Ejemplo</h3>
+      <p>
+        Supongamos buscar el número 7 en la lista: [3, 5, 7, 9, 11]. La búsqueda recorrerá los elementos en orden: 3 (no), 5 (no), 7 (sí) y devolverá el índice 2.
+      </p>
+    </section>
+
+    <section>
+      <h3>Complejidad Temporal y Espacial</h3>
+      <ul>
+        <li><strong>Peor caso:</strong> O(n), cuando el elemento está al final o no está.</li>
+        <li><strong>Mejor caso:</strong> O(1), cuando el elemento está en la primera posición.</li>
+        <li><strong>Promedio:</strong> O(n).</li>
+        <li><strong>Espacio:</strong> O(1), ya que no requiere memoria adicional significativa.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Búsqueda Binaria (Binary Search)</h2>
+      <p>
+        La búsqueda binaria es un algoritmo eficiente para encontrar un elemento en una lista ordenada. Funciona dividiendo repetidamente el espacio de búsqueda a la mitad, descartando la mitad donde no puede estar el elemento.
+      </p>
+      <p>
+        Requiere que la lista esté ordenada previamente para poder funcionar correctamente.
+      </p>
+    </section>
+
+    <section>
+      <h3>Funcionamiento</h3>
+      <ol>
+        <li>Determinar el elemento medio del arreglo.</li>
+        <li>Comparar el elemento medio con el valor buscado.</li>
+        <li>Si son iguales, devolver la posición.</li>
+        <li>Si el valor buscado es menor, repetir la búsqueda en la mitad izquierda.</li>
+        <li>Si es mayor, repetir en la mitad derecha.</li>
+        <li>Repetir hasta encontrar o que el espacio de búsqueda sea vacío.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h3>Ejemplo</h3>
+      <p>
+        Buscar el número 7 en la lista ordenada [1, 3, 5, 7, 9, 11]:
+      </p>
+      <ul>
+        <li>Elemento medio es 7 (índice 3), coinciden, devolver 3.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Complejidad Temporal y Espacial</h3>
+      <ul>
+        <li><strong>Peor caso:</strong> O(log n), dado que reduce el espacio a la mitad en cada iteración.</li>
+        <li><strong>Mejor caso:</strong> O(1), si el elemento está en la posición media inicial.</li>
+        <li><strong>Espacio:</strong> O(1) para versión iterativa y O(log n) para versión recursiva (debido a la pila).</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Implementación en Java</h3>
+      <pre><code>
+public class Busqueda {
+  // Búsqueda Lineal
+  public static int busquedaLineal(int[] arr, int objetivo) {
+    for (int i = 0; i &lt; arr.length; i++) {
+      if (arr[i] == objetivo) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  // Búsqueda Binaria (iterativa)
+  public static int busquedaBinaria(int[] arr, int objetivo) {
+    int inicio = 0;
+    int fin = arr.length - 1;
+    while (inicio <= fin) {
+      int medio = inicio + (fin - inicio) / 2;
+      if (arr[medio] == objetivo) {
+        return medio;
+      }
+      if (arr[medio] &lt; objetivo) {
+        inicio = medio + 1;
+      } else {
+        fin = medio - 1;
+      }
+    }
+    return -1;
+  }
+}
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>Conclusiones</h2>
+      <p>
+        La búsqueda lineal es simple y útil para listas pequeñas o desordenadas, pero ineficiente en grandes volúmenes. La búsqueda binaria es altamente eficiente pero requiere datos ordenados. Elegir el algoritmo adecuado depende del contexto y las características del conjunto de datos.
+      </p>
+    </section>
+
+    <section>
+      <h2>Referencias</h2>
+      <ul>
+        <li>Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). <em>Introduction to Algorithms</em>. MIT Press.</li>
+        <li>Sedgewick, R. (2011). <em>Algorithms</em>. Addison-Wesley.</li>
+        <li>Kumar, S., & Sharma, A. (2017). <em>Data Structures and Algorithms</em>. Pearson.</li>
+        <li>Weiss, M. A. (2013). <em>Data Structures and Algorithm Analysis in Java</em>. Pearson.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Proyecto Hipertexto de Algoritmos</p>
+  </footer>
+</body>
+</html>

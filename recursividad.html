@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Recursividad en Programación</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>¿Qué es la Recursividad en Programación?</h1>
+    <nav>
+      <a href="index.html" id="inicio-boton">Inicio</a>
+    </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Conceptos Generales</h2>
+            <p>
+                La recursividad en programación es una técnica poderosa que permite a una función llamarse a sí misma para resolver un problema. Este enfoque se basa en la descomposición de un problema complejo en subproblemas más pequeños, que son más fáciles de resolver. Cada vez que una función recursiva se invoca, se crea un nuevo marco de pila en la memoria del sistema, lo que permite almacenar variables locales e información de retorno. El proceso continúa hasta que se alcanza una condición base, que es la condición que detiene las llamadas recursivas.
+            </p>
+            <p>
+                Según Cormen, Leiserson, Rivest y Stein (2022), “un algoritmo recursivo resuelve un problema reduciéndolo a una o más instancias del mismo problema, pero de menor tamaño” (p. 65). Esto hace que la recursividad sea particularmente útil en estructuras de datos jerárquicas, como árboles y grafos, donde cada subestructura puede tratarse como un problema independiente del mismo tipo.
+            </p>
+            <p>
+                Además, la recursividad no solo es una herramienta teórica, sino también una práctica común en muchos lenguajes de programación como Java, Python y C++. Su uso facilita la implementación de algoritmos de búsqueda, ordenamiento, cálculo numérico y resolución de problemas combinatorios.
+            </p>
+        </section>
+
+        <section>
+            <h2>¿Qué es una Relación Recursiva?</h2>
+            <p>
+                Una relación recursiva describe cómo una solución a un problema depende de soluciones a instancias más pequeñas del mismo problema. Por ejemplo, la definición matemática del factorial de un número es una relación recursiva: n! = n × (n−1)!, con el caso base 0! = 1. Esta definición se traduce directamente en código como una función que se llama a sí misma con un valor decreciente hasta alcanzar cero.
+            </p>
+            <p>
+                En estructuras de datos, las relaciones recursivas permiten definir árboles, listas enlazadas y otros elementos de manera que cada nodo se relaciona consigo mismo o con una subestructura del mismo tipo. Este enfoque permite implementar operaciones complejas de forma elegante y estructurada.
+            </p>
+        </section>
+
+        <section>
+            <h2>¿Cómo Funciona la Recursividad?</h2>
+            <p>
+                Una función recursiva debe tener al menos dos componentes esenciales: un caso base que indique cuándo detener la recursión y una llamada recursiva que reduzca el problema. Sin estos componentes, la función recursiva entrará en un ciclo infinito que provocará un desbordamiento de pila (stack overflow).
+            </p>
+            <p>
+                Cuando se llama a una función recursiva, el sistema operativo almacena información de la función en la pila de llamadas, incluyendo variables locales y la dirección a la que se debe regresar una vez que se complete la llamada. Esto permite que las funciones recursivas trabajen correctamente, pero también puede causar problemas de rendimiento si la profundidad de la recursión es muy grande.
+            </p>
+            <img src="Imagen1.jpg" alt="Diagrama de recursividad" width="600">
+        </section>
+
+        <section>
+            <h2>Recursión Directa e Indirecta</h2>
+            <p>
+                En la recursión directa, una función se llama a sí misma directamente dentro de su propio cuerpo. Este es el tipo de recursión más común y se encuentra en la mayoría de los ejemplos clásicos, como el cálculo del factorial o la serie de Fibonacci.
+            </p>
+            <p>
+                Por otro lado, en la recursión indirecta, una función A llama a una función B, que a su vez llama a la función A. Aunque menos común, la recursión indirecta puede ser útil en sistemas complejos donde varias funciones cooperan para resolver un problema. Sin embargo, también puede hacer que el flujo del programa sea más difícil de seguir y depurar.
+            </p>
+        </section>
+
+        <section>
+            <h2>Procesos Recursivos e Iterativos</h2>
+            <p>
+                La recursión y la iteración son dos métodos diferentes para resolver problemas repetitivos. Mientras que la recursión se basa en llamadas de funciones anidadas, la iteración utiliza estructuras de control como bucles <code>for</code> y <code>while</code>. Ambas técnicas pueden ser utilizadas para resolver el mismo tipo de problemas, pero cada una tiene sus ventajas y desventajas.
+            </p>
+            <p>
+                De acuerdo con Deitel y Deitel (2020), la recursión puede resultar más intuitiva y clara para ciertos problemas, especialmente aquellos que tienen una naturaleza recursiva inherente. Sin embargo, la iteración suele ser más eficiente en términos de consumo de memoria y velocidad de ejecución.
+            </p>
+        </section>
+
+        <section>
+            <h2>Diferencias entre Recursión y Bucle</h2>
+            <ul>
+                <li><strong>Memoria:</strong> La recursión consume más memoria debido al uso de la pila.</li>
+                <li><strong>Claridad:</strong> La recursión puede ser más clara en problemas como el recorrido de árboles.</li>
+                <li><strong>Rendimiento:</strong> La iteración generalmente es más rápida y menos costosa.</li>
+            </ul>
+            <p>
+                La elección entre recursión y bucle dependerá del problema específico, del lenguaje de programación y de las restricciones de tiempo y memoria del sistema.
+            </p>
+        </section>
+
+        <section>
+            <h2>Ventajas e Inconvenientes de la Recursividad en Java</h2>
+            <p><strong>Ventajas:</strong></p>
+            <ul>
+                <li>Permite resolver problemas complejos de manera sencilla y elegante.</li>
+                <li>Facilita el trabajo con estructuras de datos recursivas como árboles y grafos.</li>
+                <li>Reduce la necesidad de escribir código repetitivo.</li>
+            </ul>
+            <p><strong>Inconvenientes:</strong></p>
+            <ul>
+                <li>Mayor consumo de memoria debido al uso de la pila de llamadas.</li>
+                <li>Posibilidad de errores por llamadas infinitas si no se define correctamente el caso base.</li>
+                <li>Puede ser menos eficiente que las soluciones iterativas en algunos casos.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Aplicación de la Recursividad en Problemas</h2>
+            <p>
+                La recursividad se utiliza ampliamente en la resolución de problemas como el cálculo del factorial, la serie de Fibonacci, el recorrido de árboles (preorden, inorden, postorden), la búsqueda binaria, y algoritmos como el Quicksort y el Mergesort. También es esencial en problemas de programación dinámica, donde las soluciones a subproblemas se reutilizan para construir la solución final.
+            </p>
+            <p>
+                En inteligencia artificial y teoría de juegos, la recursividad permite implementar algoritmos como el minimax, utilizado en juegos como el ajedrez y el tic-tac-toe. En procesamiento de lenguaje natural, se usa para analizar estructuras gramaticales anidadas.
+            </p>
+        </section>
+
+        <section>
+            <h2>Referencias</h2>
+            <p>
+                Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2022). <em>Introduction to Algorithms</em> (4.ª ed.). MIT Press.
+            </p>
+            <p>
+                Deitel, P. J., & Deitel, H. M. (2020). <em>Java: How to Program</em> (11.ª ed.). Pearson.
+            </p>
+            <p>
+                Goodrich, M. T., Tamassia, R., & Goldwasser, M. H. (2014). <em>Data Structures and Algorithms in Java</em> (6.ª ed.). Wiley.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2025 Proyecto de Hipertexto Académico | Tema 1: Recursividad
+    </footer>
+</body>
+</html>
