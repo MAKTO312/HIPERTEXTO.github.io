@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Radix Sort y Bucket Sort</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Radix Sort y Bucket Sort</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Radix Sort: Ordenamiento por Dígitos</h2>
+      <p>
+        Radix Sort es un algoritmo de ordenamiento no comparativo que ordena los datos procesando dígito por dígito, usualmente de menos significativo a más significativo (LSD - Least Significant Digit) o viceversa (MSD - Most Significant Digit). Está especialmente diseñado para ordenar números o cadenas que puedan descomponerse en elementos con orden natural, como dígitos o caracteres.
+      </p>
+      <p>
+        A diferencia de algoritmos basados en comparaciones, Radix Sort usa una técnica de distribución para ordenar los elementos, aprovechando el valor posicional de los dígitos. Esto permite que, en ciertos casos, su rendimiento sea mucho mejor que el de algoritmos comparativos, llegando a un tiempo cercano a O(nk), donde n es el número de elementos y k la cantidad de dígitos.
+      </p>
+    </section>
+
+    <section>
+      <h3>Funcionamiento del Radix Sort</h3>
+      <p>
+        El proceso básico de Radix Sort consiste en:
+      </p>
+      <ol>
+        <li>Seleccionar un dígito específico (usualmente comenzando por el menos significativo).</li>
+        <li>Ordenar todos los elementos en base a ese dígito, usando un algoritmo estable (como Counting Sort o Bucket Sort).</li>
+        <li>Repetir el proceso para cada dígito, hasta procesar el más significativo.</li>
+      </ol>
+      <p>
+        Gracias a su estabilidad, los elementos ordenados en un dígito mantienen su orden relativo en los pasos previos, garantizando así un orden final correcto.
+      </p>
+    </section>
+
+    <section>
+      <h3>Ejemplo Paso a Paso</h3>
+      <p>
+        Supongamos ordenar los números: 170, 45, 75, 90, 802, 24, 2, 66 con Radix Sort usando LSD:
+      </p>
+      <ul>
+        <li><strong>Dígito menos significativo (unidades):</strong> Ordenamos por la unidad: 170, 90, 802, 2, 24, 45, 75, 66</li>
+        <li><strong>Dígito siguiente (decenas):</strong> Ordenamos por las decenas: 802, 2, 24, 45, 66, 170, 75, 90</li>
+        <li><strong>Dígito más significativo (centenas):</strong> Ordenamos por las centenas: 2, 24, 45, 66, 75, 90, 170, 802</li>
+      </ul>
+      <p>Resultado final ordenado.</p>
+    </section>
+
+    <section>
+      <h3>Complejidad y Uso</h3>
+      <p>
+        La complejidad temporal promedio de Radix Sort es O(nk), donde:
+        <ul>
+          <li><strong>n</strong> es el número de elementos.</li>
+          <li><strong>k</strong> es el número de dígitos de los números más grandes.</li>
+        </ul>
+        Esto puede ser muy eficiente si k es pequeño comparado con n, por ejemplo en listas grandes con números pequeños.
+      </p>
+      <p>
+        La complejidad espacial es O(n + b), donde b es la base del sistema numérico (por ejemplo, 10 para decimal).
+      </p>
+      <p>
+        Radix Sort se utiliza en sistemas donde se requiere alta velocidad de ordenación y los elementos tienen estructura digital o de cadena que se pueda segmentar.
+      </p>
+    </section>
+
+    <section>
+      <h2>Bucket Sort: Ordenamiento por Distribución</h2>
+      <p>
+        Bucket Sort, también conocido como ordenamiento por cubetas o baldes, es un algoritmo que divide el rango de datos en varias "cubetas" o "baldes". Luego distribuye los elementos entre estas cubetas, ordena cada una individualmente (usualmente con otro algoritmo de ordenación eficiente) y finalmente concatena los resultados para obtener la lista ordenada.
+      </p>
+      <p>
+        Es especialmente útil cuando los datos están distribuidos uniformemente sobre un rango, ya que puede lograr un tiempo de ordenación promedio cercano a O(n).
+      </p>
+    </section>
+
+    <section>
+      <h3>Funcionamiento del Bucket Sort</h3>
+      <p>
+        El algoritmo sigue estos pasos:
+      </p>
+      <ol>
+        <li>Determinar el número de cubetas y su rango.</li>
+        <li>Distribuir cada elemento en la cubeta correspondiente según su valor.</li>
+        <li>Ordenar individualmente cada cubeta, comúnmente con un algoritmo como Insertion Sort o Quick Sort.</li>
+        <li>Concatenar todas las cubetas para formar la lista ordenada final.</li>
+      </ol>
+      <p>
+        La clave para la eficiencia de Bucket Sort es una buena elección del número de cubetas y su rango, para que los elementos se distribuyan homogéneamente.
+      </p>
+    </section>
+
+    <section>
+      <h3>Ejemplo Práctico</h3>
+      <p>
+        Supongamos ordenar números entre 0 y 1: 0.78, 0.17, 0.39, 0.26, 0.72, 0.94, 0.21, 0.12, 0.23, 0.68:
+      </p>
+      <ul>
+        <li>Se crean 5 cubetas: [0.0-0.2), [0.2-0.4), [0.4-0.6), [0.6-0.8), [0.8-1.0).</li>
+        <li>Los números se distribuyen: 
+          <ul>
+            <li>Cubeta 1: 0.17, 0.12</li>
+            <li>Cubeta 2: 0.39, 0.26, 0.21, 0.23</li>
+            <li>Cubeta 3: vacía</li>
+            <li>Cubeta 4: 0.78, 0.72, 0.68</li>
+            <li>Cubeta 5: 0.94</li>
+          </ul>
+        </li>
+        <li>Cada cubeta se ordena internamente.</li>
+        <li>Se unen las cubetas para obtener la lista ordenada: 0.12, 0.17, 0.21, 0.23, 0.26, 0.39, 0.68, 0.72, 0.78, 0.94.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Complejidad y Ventajas</h3>
+      <p>
+        La complejidad temporal promedio del Bucket Sort es O(n + k), donde n es la cantidad de elementos y k el número de cubetas. En el mejor caso, donde los datos se distribuyen uniformemente, esta eficiencia puede superar a muchos algoritmos comparativos.
+      </p>
+      <p>
+        En el peor caso, si todos los elementos caen en una sola cubeta, el rendimiento se degrada al del algoritmo usado para ordenar esa cubeta, por ejemplo O(n²) si se usa Insertion Sort.
+      </p>
+      <p>
+        Entre sus ventajas destacan:
+        <ul>
+          <li>Muy eficiente para datos distribuidos uniformemente.</li>
+          <li>Permite paralelización al ordenar cubetas independientemente.</li>
+          <li>Simple y fácil de implementar.</li>
+        </ul>
+      </p>
+    </section>
+
+    <section>
+      <h3>Implementación Básica de Bucket Sort en Java</h3>
+      <pre><code>
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class BucketSort {
+  public static void bucketSort(float[] arr) {
+    int n = arr.length;
+    if (n <= 0) return;
+
+    // Crear cubetas
+    @SuppressWarnings("unchecked")
+    ArrayList<Float>[] buckets = new ArrayList[n];
+
+    for (int i = 0; i < n; i++) {
+      buckets[i] = new ArrayList<Float>();
+    }
+
+    // Distribuir los elementos en las cubetas
+    for (float num : arr) {
+      int bucketIndex = (int) (num * n);
+      buckets[bucketIndex].add(num);
+    }
+
+    // Ordenar individualmente cada cubeta
+    for (ArrayList<Float> bucket : buckets) {
+      Collections.sort(bucket);
+    }
+
+    // Concatenar cubetas
+    int index = 0;
+    for (ArrayList<Float> bucket : buckets) {
+      for (float num : bucket) {
+        arr[index++] = num;
+      }
+    }
+  }
+}
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>Referencias</h2>
+      <ul>
+        <li>Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). <em>Introduction to Algorithms</em> (3rd ed.). MIT Press.</li>
+        <li>Sedgewick, R. (2011). <em>Algorithms</em> (4th ed.). Addison-Wesley.</li>
+        <li>Kumar, S., & Sharma, A. (2017). <em>Data Structures and Algorithms</em>. Pearson Education.</li>
+        <li>Weiss, M. A. (2013). <em>Data Structures and Algorithm Analysis in Java</em> (3rd ed.). Pearson.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Proyecto Hipertexto de Algoritmos</p>
+  </footer>
+</body>
+</html>
