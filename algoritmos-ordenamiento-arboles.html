@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Algoritmos de Ordenamiento y Árboles</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Algoritmos de Ordenamiento y Estructuras de Árboles</h1>
+        <nav>
+      <a href="index.html">Inicio</a>
+    </nav>
+    </header>
+
+    <section>
+        <h2>Método de Burbuja (Bubble Sort)</h2>
+        <p>El método de burbuja es un algoritmo de ordenamiento sencillo que compara elementos adyacentes y los intercambia si están en el orden incorrecto. Es uno de los métodos más fáciles de entender, aunque no es el más eficiente para listas grandes.</p>
+        <pre>
+public class BubbleSort {
+    public static void sort(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+}
+        </pre>
+        <p>Este algoritmo tiene una <strong>complejidad temporal de O(n²)</strong> y una espacial de O(1).</p>
+
+        <h2>Método por Torneo (Tournament Sort)</h2>
+        <p>Este método simula un torneo en el cual los elementos se comparan en pares, se seleccionan los ganadores y estos se enfrentan nuevamente hasta que se obtiene el orden deseado. Se basa en una estructura tipo árbol.</p>
+        <p>Su implementación requiere estructuras auxiliares y es útil para representar la lógica detrás de algoritmos como los heaps.</p>
+        <section class="torneo">
+  <h2>Método por Torneo (Representación Visual)</h2>
+  <p>El método por torneo compara elementos por pares hasta encontrar el mayor. Se asemeja a una competencia donde los ganadores avanzan de ronda.</p>
+
+  <p><strong>Ejemplo:</strong> Encontrar el número mayor entre: 4, 7, 2, 9</p>
+  <ul>
+    <li>Primera Ronda:
+      <ul>
+        <li>4 vs 7 → <strong>7</strong> gana</li>
+        <li>2 vs 9 → <strong>9</strong> gana</li>
+      </ul>
+    </li>
+    <li>Final:
+      <ul>
+        <li>7 vs 9 → <strong>9</strong> es el ganador</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>Este método permite encontrar eficientemente el máximo valor con un número reducido de comparaciones.</p>
+</section>
+        
+
+        <h2>Quick Sort</h2>
+        <p>Quick Sort es un algoritmo eficiente de ordenamiento basado en la técnica de divide y vencerás. Elige un elemento llamado pivote y reordena la lista de forma que los elementos menores estén a la izquierda y los mayores a la derecha.</p>
+        <pre>
+public class QuickSort {
+    public static void quickSort(int[] arr, int low, int high) {
+        if (low < high) {
+            int pi = partition(arr, low, high);
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+        }
+    }
+    private static int partition(int[] arr, int low, int high) {
+        int pivot = arr[high];
+        int i = (low - 1);
+        for (int j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        int temp = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = temp;
+        return i + 1;
+    }
+}
+        </pre>
+
+        <h2>Árboles</h2>
+        <p>Los árboles son estructuras jerárquicas compuestas por nodos. Tienen un nodo raíz y ramas o hijos. Algunos conceptos clave son:</p>
+        <ul>
+            <li><strong>Nivel:</strong> Distancia desde la raíz al nodo.</li>
+            <li><strong>Altura:</strong> Longitud del camino más largo desde la raíz a una hoja.</li>
+            <li><strong>Hojas:</strong> Nodos sin hijos.</li>
+            <li><strong>Peso:</strong> Número total de nodos del árbol.</li>
+            <li><strong>Indentación:</strong> Representación estructurada en formato jerárquico.</li>
+            <li><strong>Conjuntos ordenados:</strong> Representación de valores con jerarquía.</li>
+            <li><strong>Paréntesis anidados:</strong> Ejemplo de cómo se puede visualizar un árbol de forma textual.</li>
+            <li><strong>Listas ligadas:</strong> Forma de implementar nodos del árbol.</li>
+        </ul>
+        <section class="arboles">
+  <h2>Árbol Binario (Visualización Simple)</h2>
+  <p>Ejemplo de un árbol binario:</p>
+  <pre>
+    A
+   / \
+  B   C
+ /     \
+D       E
+  </pre>
+  <p>Nodos hoja: D, E</p>
+  <p>Altura del árbol: 3</p>
+</section>
+
+        <p>Ejemplo básico de un árbol:</p>
+        <pre>
+class Nodo {
+    int valor;
+    Nodo izquierdo;
+    Nodo derecho;
+    public Nodo(int valor) {
+        this.valor = valor;
+        izquierdo = null;
+        derecho = null;
+    }
+}
+        
+        </pre>
+
+        <h3>Árboles de búsqueda secuencial</h3>
+        <ul>
+            <li><strong>Recorrido Preorden:</strong> Nodo - Izquierda - Derecha</li>
+            <li><strong>Recorrido Inorden:</strong> Izquierda - Nodo - Derecha</li>
+            <li><strong>Recorrido Postorden:</strong> Izquierda - Derecha - Nodo</li>
+        </ul>
+        <p>Ejemplo en código:</p>
+        <pre>
+void preorden(Nodo nodo) {
+    if (nodo != null) {
+        System.out.print(nodo.valor + " ");
+        preorden(nodo.izquierdo);
+        preorden(nodo.derecho);
+    }
+}
+
+        </pre>
+
+        <h2>Algoritmo de Dijkstra</h2>
+        <p>Dijkstra es un algoritmo que permite encontrar el camino más corto entre dos nodos en un grafo ponderado. Es muy utilizado en redes y sistemas de navegación GPS.</p>
+        <pre>
+public class Dijkstra {
+    final static int INF = 9999, nV = 6;
+    int minDistance(int[] dist, Boolean[] sptSet) {
+        int min = INF, min_index = -1;
+        for (int v = 0; v < nV; v++) {
+            if (!sptSet[v] && dist[v] <= min) {
+                min = dist[v];
+                min_index = v;
+            }
+        }
+        return min_index;
+    }
+    void dijkstra(int[][] graph, int src) {
+        int[] dist = new int[nV];
+        Boolean[] sptSet = new Boolean[nV];
+        for (int i = 0; i < nV; i++) {
+            dist[i] = INF;
+            sptSet[i] = false;
+        }
+        dist[src] = 0;
+        for (int count = 0; count < nV - 1; count++) {
+            int u = minDistance(dist, sptSet);
+            sptSet[u] = true;
+            for (int v = 0; v < nV; v++)
+                if (!sptSet[v] && graph[u][v] != 0 &&
+                    dist[u] != INF && dist[u] + graph[u][v] < dist[v])
+                    dist[v] = dist[u] + graph[u][v];
+        }
+        for (int i = 0; i < nV; i++)
+            System.out.println("Nodo " + i + " a " + src + " distancia: " + dist[i]);
+    }
+}
+        </pre>
+        <p>Su complejidad depende de la implementación, con versiones que van desde O(V²) hasta O((V + E) log V) con colas de prioridad.</p>
+
+        <h2>Referencias (APA)</h2>
+        <ul>
+            <li>Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). <em>Introduction to Algorithms</em>. MIT Press.</li>
+            <li>Sedgewick, R., & Wayne, K. (2011). <em>Algorithms</em> (4th ed.). Addison-Wesley.</li>
+            <li>Horstmann, C. (2019). <em>Big Java: Early Objects</em>. Wiley.</li>
+        </ul>
+    </section>
+</body>
+</html>

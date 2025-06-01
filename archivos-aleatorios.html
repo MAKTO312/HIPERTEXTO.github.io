@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 9: Archivos Aleatorios</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Tema 9: Archivos Aleatorios</h1>
+         <nav>
+      <a href="index.html">Inicio</a>
+    </nav>
+    </header>
+
+    <section>
+        <h2>Introducción</h2>
+        <p>
+            Los archivos aleatorios, también conocidos como archivos de acceso directo o acceso aleatorio, son estructuras utilizadas para acceder a datos en posiciones específicas dentro de un archivo sin necesidad de leerlo secuencialmente. A diferencia de los archivos secuenciales, que deben recorrerse desde el principio hasta encontrar el dato deseado, los archivos aleatorios permiten saltar directamente a una ubicación específica del archivo mediante el uso de punteros o posiciones byte.
+        </p>
+        <p>
+            Este tipo de acceso es especialmente útil en sistemas que manejan grandes volúmenes de datos, bases de datos, registros de usuarios o cualquier otro escenario en el que se requiere eficiencia al buscar, actualizar o eliminar registros concretos.
+        </p>
+    </section>
+
+    <section>
+        <h2>¿Qué son los Archivos Aleatorios?</h2>
+        <p>
+            Un archivo aleatorio es un archivo estructurado de tal manera que sus datos están organizados en registros de tamaño fijo, lo que permite conocer exactamente dónde comienza y termina cada uno. Esta estructura facilita el acceso inmediato a cualquier parte del archivo sin recorrer todo el contenido. En lenguajes como C, C++ o Java, se utilizan funciones como <code>seek()</code>, <code>fseek()</code>, <code>seekg()</code> o clases como <code>RandomAccessFile</code> para manipular archivos con acceso aleatorio.
+        </p>
+    </section>
+
+    <section>
+        <h2>Ventajas del Acceso Aleatorio</h2>
+        <ul>
+            <li><strong>Velocidad:</strong> Permite acceder rápidamente a cualquier registro, lo que mejora significativamente el rendimiento.</li>
+            <li><strong>Actualización eficiente:</strong> Se puede modificar directamente un registro sin afectar el resto del archivo.</li>
+            <li><strong>Flexibilidad:</strong> Se adapta muy bien a estructuras como tablas de usuarios, catálogos o archivos de índices.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Funcionamiento Interno</h2>
+        <p>
+            El acceso aleatorio se basa en el uso de desplazamientos (offsets) que indican cuántos bytes deben moverse desde el inicio del archivo hasta llegar al dato deseado. Si cada registro ocupa 100 bytes y se desea acceder al registro número 50, simplemente se salta a la posición 4900 (49 * 100). Este método requiere que los registros tengan un tamaño fijo para poder calcular correctamente la posición.
+        </p>
+        <p>
+            En Java, por ejemplo, la clase <code>RandomAccessFile</code> permite tanto la lectura como la escritura en ubicaciones específicas del archivo usando métodos como <code>seek(long pos)</code>, <code>read()</code>, <code>write()</code>, entre otros.
+        </p>
+    </section>
+
+    <section>
+        <h2>Aplicaciones Comunes</h2>
+        <p>El acceso aleatorio es ampliamente utilizado en:</p>
+        <ul>
+            <li><strong>Bases de datos:</strong> Para ubicar rápidamente registros sin hacer un recorrido completo.</li>
+            <li><strong>Sistemas bancarios:</strong> Para acceder a información de clientes mediante su número de cuenta.</li>
+            <li><strong>Sistemas de archivos:</strong> El sistema operativo accede a bloques específicos en el disco de forma aleatoria.</li>
+            <li><strong>Índices de búsqueda:</strong> Para saltar directamente a los resultados deseados.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Dificultades y Desventajas</h2>
+        <ul>
+            <li>Generalmente requieren estructuras más rígidas y menos tolerantes a cambios dinámicos.</li>
+            <li>Los registros deben tener un tamaño fijo o ser gestionados con punteros internos.</li>
+            <li>Puede requerir mayor gestión manual del espacio de almacenamiento.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Ejemplo en Java</h2>
+        <pre><code>
+try {
+    RandomAccessFile archivo = new RandomAccessFile("datos.dat", "rw");
+    int registro = 3;
+    long posicion = registro * 100;
+    archivo.seek(posicion);
+    archivo.writeUTF("Usuario actualizado");
+    archivo.close();
+} catch (IOException e) {
+    System.out.println("Error al acceder al archivo: " + e.getMessage());
+}
+        </code></pre>
+        <p>
+            En este ejemplo, se posiciona directamente en el tercer registro del archivo (suponiendo que cada registro ocupa 100 bytes) y se escribe información nueva en esa posición.
+        </p>
+    </section>
+
+    <section>
+        <h2>Comparación con Archivos Secuenciales</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Archivo Secuencial</th>
+                    <th>Archivo Aleatorio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Se recorre desde el inicio.</td>
+                    <td>Se accede a una posición específica.</td>
+                </tr>
+                <tr>
+                    <td>Más simple, pero más lento para buscar.</td>
+                    <td>Más complejo, pero muy eficiente.</td>
+                </tr>
+                <tr>
+                    <td>No requiere registros de tamaño fijo.</td>
+                    <td>Generalmente requiere tamaño fijo por registro.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Conclusión</h2>
+        <p>
+            El uso de archivos aleatorios representa una estrategia avanzada para el manejo eficiente de datos persistentes. Gracias a su capacidad de acceso inmediato, permiten operaciones rápidas en estructuras de datos bien organizadas. Aunque presentan mayor complejidad en su implementación, su rendimiento en sistemas donde se accede constantemente a posiciones específicas los convierte en una herramienta poderosa para el desarrollo de software moderno.
+        </p>
+    </section>
+
+    <section>
+        <h2>Referencias</h2>
+        <ul>
+            <li>Silberschatz, A., Galvin, P. B., & Gagne, G. (2018). <em>Operating System Concepts</em>. Wiley.</li>
+            <li>Tanenbaum, A. S., & Bos, H. (2015). <em>Modern Operating Systems</em>. Pearson.</li>
+            <li>Oracle. (2023). <em>Java Documentation - RandomAccessFile</em>. Retrieved from https://docs.oracle.com/javase/</li>
+        </ul>
+    </section>
+</body>
+</html>

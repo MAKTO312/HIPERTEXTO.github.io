@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 10: Persistencia de Objetos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Tema 10: Persistencia de Objetos</h1>
+         <nav>
+      <a href="index.html">Inicio</a>
+    </nav>
+    </header>
+
+    <section>
+        <h2>Introducción</h2>
+        <p>
+            En el desarrollo de software, uno de los desafíos más comunes es conservar los datos de una aplicación incluso después de que esta haya terminado su ejecución. Aquí entra en juego el concepto de <strong>persistencia de objetos</strong>. Esta técnica permite almacenar el estado de los objetos en un medio no volátil, como un archivo o una base de datos, y recuperarlos posteriormente sin perder la estructura ni el contenido de dichos objetos.
+        </p>
+        <p>
+            La persistencia es esencial en sistemas modernos que manejan información compleja, ya que permite que los objetos no se limiten únicamente al tiempo de ejecución, sino que puedan ser reutilizados y modificados más adelante.
+        </p>
+    </section>
+
+    <section>
+        <h2>¿Qué es la Persistencia de Objetos?</h2>
+        <p>
+            La persistencia de objetos se refiere al proceso de almacenar el estado interno de un objeto para que pueda ser reconstruido más tarde. En otras palabras, implica guardar el contenido de la memoria RAM (objeto en ejecución) en un almacenamiento permanente, y luego poder recrear ese mismo objeto exactamente como estaba.
+        </p>
+        <p>
+            Existen distintos mecanismos para lograrlo, entre ellos:
+        </p>
+        <ul>
+            <li>Serialización de objetos</li>
+            <li>Mapeo objeto-relacional (ORM)</li>
+            <li>Almacenamiento en archivos binarios o XML</li>
+            <li>Bases de datos orientadas a objetos</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Serialización de Objetos</h2>
+        <p>
+            La serialización es el proceso de convertir un objeto en una secuencia de bytes para que pueda ser almacenado o transmitido. Posteriormente, esa secuencia de bytes puede ser deserializada para volver a crear el objeto original.
+        </p>
+        <pre><code>
+// Java - Ejemplo de serialización
+import java.io.*;
+
+class Usuario implements Serializable {
+    String nombre;
+    int edad;
+
+    public Usuario(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+}
+
+Usuario u = new Usuario("Carlos", 25);
+ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("usuario.dat"));
+oos.writeObject(u);
+oos.close();
+        </code></pre>
+        <p>
+            Este ejemplo guarda un objeto de tipo Usuario en un archivo. Luego puede ser leído y restaurado mediante <code>ObjectInputStream</code>.
+        </p>
+    </section>
+
+    <section>
+        <h2>Mapeo Objeto-Relacional (ORM)</h2>
+        <p>
+            El ORM es una técnica que permite mapear clases de programación orientada a objetos a tablas en una base de datos relacional. Esta técnica es muy común en frameworks como Hibernate (Java), Entity Framework (.NET) y SQLAlchemy (Python).
+        </p>
+        <p>
+            Mediante ORM, un objeto puede ser automáticamente convertido a una fila en una tabla y viceversa, lo que facilita la persistencia sin que el programador tenga que escribir sentencias SQL manualmente.
+        </p>
+    </section>
+
+    <section>
+        <h2>Ventajas de la Persistencia</h2>
+        <ul>
+            <li><strong>Reutilización de datos:</strong> Los objetos guardados pueden ser reutilizados sin necesidad de crearlos desde cero.</li>
+            <li><strong>Facilita la migración:</strong> Los datos pueden ser transferidos entre sistemas o plataformas fácilmente.</li>
+            <li><strong>Reducción de errores:</strong> Se conserva la estructura original del objeto, reduciendo errores de interpretación.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Desafíos y Consideraciones</h2>
+        <ul>
+            <li>Las clases deben ser compatibles con el mecanismo de serialización utilizado.</li>
+            <li>Los cambios en la estructura de una clase después de haber serializado un objeto pueden generar conflictos de compatibilidad.</li>
+            <li>La seguridad es crítica: un archivo serializado puede ser una fuente de vulnerabilidad si se manipula maliciosamente.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Comparación entre Técnicas</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Método</th>
+                    <th>Ventajas</th>
+                    <th>Desventajas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Serialización</td>
+                    <td>Simple, directo, no requiere base de datos.</td>
+                    <td>Dependencia de versiones de clases, poco flexible.</td>
+                </tr>
+                <tr>
+                    <td>ORM</td>
+                    <td>Automatiza gran parte del trabajo, ideal para bases de datos.</td>
+                    <td>Puede ocultar detalles importantes, curva de aprendizaje.</td>
+                </tr>
+                <tr>
+                    <td>Archivos planos/XML</td>
+                    <td>Fácil de leer por humanos, multiplataforma.</td>
+                    <td>Menor rendimiento, más verboso.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Buenas Prácticas</h2>
+        <ul>
+            <li>Implementar correctamente interfaces como Serializable.</li>
+            <li>Manejar versiones con UID si se usa Java.</li>
+            <li>Evitar serializar información sensible sin cifrado.</li>
+            <li>Verificar integridad de datos tras la deserialización.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Conclusión</h2>
+        <p>
+            La persistencia de objetos es una herramienta esencial en la programación moderna, especialmente en aplicaciones que necesitan conservar datos entre sesiones. Permite que los objetos se mantengan más allá del ciclo de vida de una aplicación, aumentando la robustez, reutilización y escalabilidad del sistema. Dominar los distintos métodos de persistencia, así como sus ventajas y limitaciones, es una habilidad clave para cualquier desarrollador profesional.
+        </p>
+    </section>
+
+    <section>
+        <h2>Referencias</h2>
+        <ul>
+            <li>Bloch, J. (2018). <em>Effective Java</em>. Addison-Wesley.</li>
+            <li>Gamma, E., Helm, R., Johnson, R., & Vlissides, J. (1994). <em>Design Patterns</em>. Addison-Wesley.</li>
+            <li>Oracle. (2024). <em>Java Object Serialization Specification</em>. https://docs.oracle.com/</li>
+            <li>Microsoft. (2023). <em>Entity Framework Core Documentation</em>. https://learn.microsoft.com/</li>
+        </ul>
+    </section>
+</body>
+</html>

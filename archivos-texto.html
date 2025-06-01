@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 11: Archivos de Texto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Tema 11: Archivos de Texto</h1>
+        <nav>
+      <a href="index.html">Inicio</a>
+    </nav>
+    </header>
+
+    <section>
+        <h2>Introducción</h2>
+        <p>
+            Los archivos de texto son una de las formas más básicas y ampliamente utilizadas para almacenar información de manera permanente en los sistemas informáticos. A diferencia de los archivos binarios, los archivos de texto contienen datos codificados en caracteres legibles por humanos, lo que facilita su creación, edición y análisis. 
+        </p>
+        <p>
+            Desde simples configuraciones hasta registros complejos, los archivos de texto juegan un papel esencial en el desarrollo de aplicaciones, la administración de sistemas y la transferencia de datos entre plataformas. En este tema, exploraremos a fondo cómo funcionan, cómo se manipulan en distintos lenguajes de programación y las mejores prácticas para su uso.
+        </p>
+    </section>
+
+    <section>
+        <h2>¿Qué es un archivo de texto?</h2>
+        <p>
+            Un archivo de texto es un documento que contiene una secuencia de caracteres codificados en formatos como ASCII o UTF-8. Estos archivos pueden tener cualquier extensión, aunque las más comunes son <code>.txt</code>, <code>.log</code>, <code>.csv</code>, entre otros.
+        </p>
+        <p>
+            Son especialmente útiles para almacenar:
+        </p>
+        <ul>
+            <li>Notas o registros simples</li>
+            <li>Archivos de configuración (ej. INI, CFG, YAML)</li>
+            <li>Datos separados por delimitadores (CSV, TSV)</li>
+            <li>Documentación, scripts o incluso código fuente</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Operaciones Básicas con Archivos de Texto</h2>
+        <p>
+            Las operaciones más comunes que se realizan con archivos de texto incluyen:
+        </p>
+        <ul>
+            <li>Abrir y cerrar archivos</li>
+            <li>Leer contenido (línea por línea o todo el archivo)</li>
+            <li>Escribir o sobreescribir contenido</li>
+            <li>Agregar contenido sin borrar el anterior</li>
+            <li>Eliminar o renombrar archivos</li>
+        </ul>
+
+        <h3>Ejemplo en Python</h3>
+        <pre><code># Escribir en un archivo
+with open("notas.txt", "w") as archivo:
+    archivo.write("Primera línea de texto\n")
+    archivo.write("Segunda línea")
+
+# Leer el archivo
+with open("notas.txt", "r") as archivo:
+    for linea in archivo:
+        print(linea.strip())
+        </code></pre>
+    </section>
+
+    <section>
+        <h2>Modos de Apertura</h2>
+        <p>
+            La manera en que abrimos un archivo determina cómo interactuamos con él. Los modos de apertura más comunes son:
+        </p>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Modo</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>"r"</code></td>
+                    <td>Abrir para leer. Falla si no existe.</td>
+                </tr>
+                <tr>
+                    <td><code>"w"</code></td>
+                    <td>Abrir para escribir. Sobrescribe si ya existe.</td>
+                </tr>
+                <tr>
+                    <td><code>"a"</code></td>
+                    <td>Abrir para agregar al final del archivo.</td>
+                </tr>
+                <tr>
+                    <td><code>"r+"</code></td>
+                    <td>Abrir para leer y escribir.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Lectura y Escritura en otros lenguajes</h2>
+
+        <h3>Java</h3>
+        <pre><code>import java.io.*;
+
+public class LeerArchivo {
+    public static void main(String[] args) {
+        try {
+            BufferedReader lector = new BufferedReader(new FileReader("datos.txt"));
+            String linea;
+            while ((linea = lector.readLine()) != null) {
+                System.out.println(linea);
+            }
+            lector.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+        </code></pre>
+
+        <h3>C++</h3>
+        <pre><code>#include &lt;fstream&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    ofstream archivo("archivo.txt");
+    archivo &lt;&lt; "Hola, mundo\n";
+    archivo.close();
+
+    string linea;
+    ifstream lectura("archivo.txt");
+    while (getline(lectura, linea)) {
+        cout &lt;&lt; linea &lt;&lt; endl;
+    }
+    lectura.close();
+    return 0;
+}
+        </code></pre>
+    </section>
+
+    <section>
+        <h2>Ventajas de los Archivos de Texto</h2>
+        <ul>
+            <li><strong>Compatibilidad:</strong> Son legibles por cualquier sistema operativo.</li>
+            <li><strong>Portabilidad:</strong> Fácil de compartir y transferir.</li>
+            <li><strong>Simplicidad:</strong> No requieren estructuras complejas.</li>
+            <li><strong>Edición Manual:</strong> Pueden abrirse en cualquier editor de texto.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Limitaciones</h2>
+        <ul>
+            <li>No adecuados para datos binarios o multimedia.</li>
+            <li>Carecen de mecanismos de seguridad o validación.</li>
+            <li>Poca eficiencia en estructuras complejas.</li>
+            <li>Mayor tamaño que formatos comprimidos o binarios.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Aplicaciones Reales</h2>
+        <ul>
+            <li>Sistemas de logging (archivos de registros)</li>
+            <li>Exportación e importación de datos entre sistemas</li>
+            <li>Configuraciones para videojuegos, servidores y software</li>
+            <li>Almacenamiento de scripts y código fuente</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Buenas Prácticas</h2>
+        <ul>
+            <li>Utilizar codificación UTF-8 para compatibilidad internacional.</li>
+            <li>Verificar siempre la existencia del archivo antes de abrirlo.</li>
+            <li>Cerrar correctamente los archivos después de su uso.</li>
+            <li>Evitar sobrescribir accidentalmente archivos importantes.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Conclusión</h2>
+        <p>
+            Los archivos de texto son una herramienta sencilla pero poderosa en el mundo de la programación. Permiten registrar información de forma directa, sin requerir bases de datos u otras estructuras complejas. Aunque tienen limitaciones frente a otros formatos más sofisticados, su facilidad de uso, portabilidad y compatibilidad los convierten en una opción valiosa en múltiples contextos. Dominar su manipulación es fundamental para cualquier desarrollador de software.
+        </p>
+    </section>
+
+    <section>
+        <h2>Referencias</h2>
+        <ul>
+            <li>Zelle, J. (2016). <em>Python Programming: An Introduction to Computer Science</em>.</li>
+            <li>Oracle. (2023). <em>Java I/O Tutorial</em>. https://docs.oracle.com/</li>
+            <li>Stroustrup, B. (2013). <em>The C++ Programming Language</em>.</li>
+            <li>Microsoft Learn. (2024). <em>Text File I/O</em>. https://learn.microsoft.com/</li>
+        </ul>
+    </section>
+</body>
+</html>

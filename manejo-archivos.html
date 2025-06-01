@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 8: Manejo de Archivos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Tema 8: Manejo de Archivos: Clave en Programación y Sistemas Operativos</h1>
+         <nav>
+      <a href="index.html">Inicio</a>
+    </nav>
+    </header>
+
+    <section>
+        <h2>Introducción</h2>
+        <p>
+            El manejo de archivos es una habilidad esencial en la programación moderna, pues permite a los programas interactuar con el sistema de almacenamiento para guardar, leer, modificar o eliminar información de forma permanente. Desde archivos de texto hasta bases de datos complejas, el trabajo con archivos permite persistencia de datos, lo que es fundamental en sistemas que requieren retener información más allá de la ejecución del programa. 
+        </p>
+    </section>
+
+    <section>
+        <h2>¿Qué es el Manejo de Archivos?</h2>
+        <p>
+            En programación, el manejo de archivos se refiere al conjunto de técnicas y métodos que permiten abrir, leer, escribir, cerrar y eliminar archivos en un sistema de archivos. Estas acciones pueden realizarse en diferentes lenguajes de programación como Java, Python, C, entre otros, y son una parte esencial del desarrollo de software, particularmente en aplicaciones que requieren almacenar configuraciones, registros, reportes u otros datos persistentes.
+        </p>
+        <p>
+            Un archivo puede considerarse como una colección de datos relacionados que reside en un sistema de almacenamiento secundario (como un disco duro). Los archivos permiten a los programas mantener información después de haber sido cerrados, proporcionando continuidad a los datos (Tanembaum & Bos, 2015).
+        </p>
+    </section>
+
+    <section>
+        <h2>Tipos de Archivos</h2>
+        <p>
+            Los archivos pueden clasificarse en dos grandes grupos:
+        </p>
+        <ul>
+            <li><strong>Archivos de texto:</strong> Contienen datos legibles por humanos, como configuraciones o registros simples. Se manipulan usando flujos de caracteres.</li>
+            <li><strong>Archivos binarios:</strong> Contienen datos codificados, como imágenes, archivos ejecutables o estructuras de datos complejas. Son más eficientes, pero requieren procesamiento adicional para su interpretación.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Operaciones Básicas con Archivos</h2>
+        <p>
+            Las principales operaciones que se realizan al manejar archivos incluyen:
+        </p>
+        <ul>
+            <li><strong>Apertura:</strong> Se accede al archivo para lectura, escritura o ambas.</li>
+            <li><strong>Lectura:</strong> Se recuperan datos del archivo.</li>
+            <li><strong>Escritura:</strong> Se agregan datos al archivo o se sobrescriben.</li>
+            <li><strong>Cierre:</strong> Se libera el archivo y se asegura que los cambios estén guardados.</li>
+        </ul>
+        <p>
+            En lenguajes como Python, esto se realiza con funciones como <code>open()</code>, <code>read()</code>, <code>write()</code> y <code>close()</code>. En Java, se utilizan clases como <code>FileReader</code> y <code>FileWriter</code>, o flujos como <code>BufferedReader</code> y <code>BufferedWriter</code>.
+        </p>
+    </section>
+
+    <section>
+        <h2>Relación con los Sistemas Operativos</h2>
+        <p>
+            El manejo de archivos está estrechamente ligado a los sistemas operativos, ya que estos proporcionan las herramientas y recursos necesarios para su administración. Los sistemas de archivos como FAT32, NTFS o ext4 son responsables de organizar los archivos en estructuras jerárquicas, asignar espacio en disco y controlar el acceso a los datos.
+        </p>
+        <p>
+            Los sistemas operativos ofrecen APIs para que los programas puedan interactuar con archivos sin necesidad de conocer los detalles físicos del almacenamiento. Esta abstracción permite la portabilidad y la eficiencia del software (Silberschatz, Galvin & Gagne, 2018).
+        </p>
+    </section>
+
+    <section>
+        <h2>Seguridad y Permisos</h2>
+        <p>
+            Una parte crítica del manejo de archivos es la seguridad. Los sistemas operativos modernos implementan mecanismos de permisos y control de acceso para asegurar que los archivos sean leídos o modificados solo por usuarios o procesos autorizados. Esto es vital para proteger la integridad del sistema y la confidencialidad de la información.
+        </p>
+    </section>
+
+    <section>
+        <h2>Aplicaciones Prácticas</h2>
+        <p>
+            El manejo de archivos es usado en una variedad de aplicaciones, incluyendo:
+        </p>
+        <ul>
+            <li><strong>Gestión de registros:</strong> Aplicaciones empresariales almacenan logs, auditorías y reportes.</li>
+            <li><strong>Configuración de software:</strong> Archivos .ini o .json contienen parámetros para inicializar programas.</li>
+            <li><strong>Sistemas de base de datos:</strong> Archivos binarios almacenan estructuras complejas de datos.</li>
+            <li><strong>Procesamiento de datos:</strong> Lectura y análisis de grandes volúmenes de información en archivos CSV o XML.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Buenas Prácticas</h2>
+        <ul>
+            <li>Siempre cerrar los archivos después de usarlos.</li>
+            <li>Manejar errores (uso de excepciones) al trabajar con archivos.</li>
+            <li>Evitar sobrescribir archivos importantes accidentalmente.</li>
+            <li>Validar rutas y permisos antes de intentar abrir o crear archivos.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Conclusión</h2>
+        <p>
+            El manejo de archivos representa una parte fundamental del desarrollo de software, especialmente en sistemas que requieren almacenar y acceder a datos persistentes. Conocer cómo interactuar correctamente con los archivos y entender su relación con el sistema operativo permite al programador crear soluciones robustas, eficientes y seguras. Como dice Tanembaum (2015), “la persistencia de los datos es el alma de cualquier sistema de información moderno”.
+        </p>
+    </section>
+
+    <section>
+        <h2>Referencias</h2>
+        <ul>
+            <li>Silberschatz, A., Galvin, P. B., & Gagne, G. (2018). <em>Operating System Concepts</em> (10th ed.). Wiley.</li>
+            <li>Tanenbaum, A. S., & Bos, H. (2015). <em>Modern Operating Systems</em> (4th ed.). Pearson.</li>
+            <li>Downey, A. B. (2015). <em>Think Python: How to Think Like a Computer Scientist</em>. O’Reilly Media.</li>
+            <li>Oracle. (2023). <em>Java Platform, Standard Edition Documentation</em>. Retrieved from https://docs.oracle.com/javase/</li>
+        </ul>
+    </section>
+</body>
+</html>

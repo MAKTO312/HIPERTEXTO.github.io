@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 12: Árboles Multicamino</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Tema 12: Árboles Multicamino</h1>
+        <nav>
+      <a href="index.html">Inicio</a>
+    </nav>
+    </header>
+
+    <section>
+        <h2>Introducción</h2>
+        <p>
+            Los árboles multicamino (o <strong>multi-way trees</strong>) son una extensión general de los árboles binarios, en los que cada nodo puede tener más de dos hijos. Son estructuras fundamentales en la informática moderna, especialmente útiles en la organización de bases de datos, sistemas de archivos y estructuras de búsqueda como los árboles B y B+.
+        </p>
+        <p>
+            A diferencia de los árboles binarios, donde cada nodo tiene como máximo dos hijos (izquierdo y derecho), en los árboles multicamino un nodo puede tener entre 2 y <em>m</em> hijos, donde <em>m</em> es el orden del árbol.
+        </p>
+    </section>
+
+    <section>
+        <h2>Características Principales</h2>
+        <ul>
+            <li>Cada nodo puede tener múltiples hijos (más de dos).</li>
+            <li>Útiles para representar información jerárquica compleja.</li>
+            <li>Frecuentemente utilizados en estructuras balanceadas como árboles B y B+.</li>
+            <li>Los nodos pueden almacenar múltiples claves.</li>
+            <li>Muy eficientes para operaciones en discos (almacenamiento secundario).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Ejemplo Conceptual</h2>
+        <p>Un árbol 3-camino (orden 3) permite hasta 2 claves por nodo y hasta 3 hijos. Ejemplo:</p>
+        <pre>
+                [10 | 20]
+               /   |    \
+           [5]  [15]   [25 | 30]
+        </pre>
+        <p>
+            Este ejemplo muestra un nodo raíz con dos claves (10 y 20) y tres hijos, cada uno conteniendo claves menores, intermedias y mayores, respectivamente.
+        </p>
+    </section>
+
+    <section>
+        <h2>Árbol B como Árbol Multicamino</h2>
+        <p>
+            Los árboles B son árboles balanceados de búsqueda de múltiples caminos donde cada nodo puede contener varias claves y varios hijos. Se utilizan ampliamente en bases de datos y sistemas de archivos porque minimizan el número de accesos a disco.
+        </p>
+
+        <h3>Propiedades de un Árbol B de orden m:</h3>
+        <ul>
+            <li>Cada nodo puede tener como máximo m hijos.</li>
+            <li>Cada nodo (excepto la raíz) tiene al menos ⌈m/2⌉ hijos.</li>
+            <li>Todas las hojas están al mismo nivel.</li>
+            <li>Las claves están ordenadas dentro de cada nodo.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Ejemplo en Python: Árbol B simple</h2>
+        <pre><code>class BNode:
+    def __init__(self, hoja=False):
+        self.hoja = hoja
+        self.llaves = []
+        self.hijos = []
+
+class BTree:
+    def __init__(self, t):
+        self.raiz = BNode(True)
+        self.t = t  # Mínimo grado
+
+    def insertar(self, k):
+        # Lógica de inserción (simplificada para ejemplo)
+        pass
+
+# Crear un árbol B de orden 3
+arbol = BTree(3)
+arbol.insertar(10)
+arbol.insertar(20)
+arbol.insertar(5)
+        </code></pre>
+    </section>
+
+    <section>
+        <h2>Comparación con otros árboles</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Tipo de Árbol</th>
+                    <th>Número de Hijos</th>
+                    <th>Aplicación Común</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Árbol Binario</td>
+                    <td>2</td>
+                    <td>Expresiones, árboles de decisión</td>
+                </tr>
+                <tr>
+                    <td>Árbol Multicamino</td>
+                    <td>2 o más</td>
+                    <td>Índices de bases de datos, sistemas de archivos</td>
+                </tr>
+                <tr>
+                    <td>Árbol B+</td>
+                    <td>Varios</td>
+                    <td>Índices de bases de datos grandes</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Aplicaciones de los Árboles Multicamino</h2>
+        <ul>
+            <li>Índices en bases de datos relacionales (como PostgreSQL y Oracle).</li>
+            <li>Sistemas de archivos jerárquicos.</li>
+            <li>Compiladores (análisis léxico y sintáctico).</li>
+            <li>Árboles de decisión con múltiples ramificaciones.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Ventajas</h2>
+        <ul>
+            <li>Mayor eficiencia en lectura/escritura en disco.</li>
+            <li>Mejor rendimiento con grandes volúmenes de datos.</li>
+            <li>Reducción de la altura del árbol.</li>
+            <li>Balance automático en árboles como B y B+.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Desventajas</h2>
+        <ul>
+            <li>Implementación más compleja que árboles binarios.</li>
+            <li>Mayor uso de memoria en nodos con muchas claves.</li>
+            <li>Puede requerir más mantenimiento y estructura en memoria.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Conclusión</h2>
+        <p>
+            Los árboles multicamino son estructuras esenciales en computación, especialmente cuando se trabaja con grandes volúmenes de datos que deben ser organizados y accedidos de forma eficiente. Su implementación como árboles B y B+ demuestra su valor en aplicaciones reales donde el rendimiento y la escalabilidad son prioritarios.
+        </p>
+    </section>
+
+    <section>
+        <h2>Referencias</h2>
+        <ul>
+            <li>Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). <em>Introduction to Algorithms</em>.</li>
+            <li>Knuth, D. (1998). <em>The Art of Computer Programming</em>.</li>
+            <li>Silberschatz, A., Galvin, P. B., & Gagne, G. (2022). <em>Operating System Concepts</em>.</li>
+            <li>Geeks for Geeks. (2024). <em>Multi-way Trees</em>. https://www.geeksforgeeks.org</li>
+        </ul>
+    </section>
+</body>
+</html>
